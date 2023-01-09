@@ -29,3 +29,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -LD:/GDAL/GDAL353/lib/ -lgdal_i
+else:win32:CONFIG(debug, debug|release): LIBS += -LD:/GDAL/GDAL353/lib/ -lgdal_i
+
+INCLUDEPATH += D:/GDAL/GDAL353/include
+DEPENDPATH += D:/GDAL/GDAL353/include

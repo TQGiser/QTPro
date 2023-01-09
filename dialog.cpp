@@ -1,6 +1,7 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include <QDebug>
+#include <gdal_priv.h>
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -60,11 +61,36 @@ void Dialog::setTextFontColor()
     ui->textEdit->setPalette(plet);
 }
 
+void Dialog::on_pushButton_4_clicked()
+{
+//    ui->textEdit->clear();
+    QList<QString> list;
+    list<<"FWH"<<"FWX"<<"CDY";
+    QListIterator<QString> i (list);
+    while (i.hasNext()) {
+        ui->textEdit->appendPlainText(i.next());
 
+    }
+    const char* pszFile;
+        GDALAllRegister();
+        pszFile = "D:/C++Pro/GDALTest1/a.tif";
+        GDALDataset* poDataset = (GDALDataset*)GDALOpen(pszFile, GA_ReadOnly);
+        GDALRasterBand* poBand = poDataset->GetRasterBand(1);
+        QString Description = poDataset->GetDescription();
+        QString DriverName = poDataset->GetDriverName();
+        int LayerCount = poDataset->GetRasterXSize();
+        int band = poBand->GetBand();
+        int xsize = poBand->GetXSize();
+        int ysize = poBand->GetYSize();
+        ui->textEdit->appendPlainText(Description);
+        ui->textEdit->appendPlainText(DriverName);
 
+}
 
-
-
-
-
-
+void Dialog::on_dial_valueChanged(int value)
+{
+    Q_UNUSED(value);
+    int value_dial = ui->dial->value();
+    QString str = str.asprintf("%d",value_dial);
+    ui->lcdNumber->display(str);
+}

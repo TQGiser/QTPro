@@ -24,6 +24,10 @@ private slots:
 
     void setTextFontColor();
 
+    void on_pushButton_4_clicked();
+
+    void on_dial_valueChanged(int value);
+
 private:
     Ui::Dialog *ui;
 };
