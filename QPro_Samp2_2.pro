@@ -35,3 +35,10 @@ else:win32:CONFIG(debug, debug|release): LIBS += -LD:/GDAL/GDAL353/lib/ -lgdal_i
 
 INCLUDEPATH += D:/GDAL/GDAL353/include
 DEPENDPATH += D:/GDAL/GDAL353/include
+
+win32:CONFIG(release, debug|release): LIBS += -LC:/GDAL/GDAL353/lib/ -lgdal_i
+else:win32:CONFIG(debug, debug|release): LIBS += -LC:/GDAL/GDAL353/lib/ -lgdal_i
+else:unix: LIBS += -LC:/GDAL/GDAL353/lib/ -lgdal_i
+
+INCLUDEPATH += C:/GDAL/GDAL353/include
+DEPENDPATH += C:/GDAL/GDAL353/include

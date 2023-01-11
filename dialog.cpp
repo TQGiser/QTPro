@@ -73,7 +73,7 @@ void Dialog::on_pushButton_4_clicked()
     }
     const char* pszFile;
         GDALAllRegister();
-        pszFile = "D:/C++Pro/GDALTest1/a.tif";
+        pszFile = "D:/1.tif";
         GDALDataset* poDataset = (GDALDataset*)GDALOpen(pszFile, GA_ReadOnly);
         GDALRasterBand* poBand = poDataset->GetRasterBand(1);
         QString Description = poDataset->GetDescription();
